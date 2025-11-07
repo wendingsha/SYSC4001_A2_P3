@@ -1,2 +1,10 @@
 program1, 10
 program2, 15
+program3, 10
+program4, 15
+program5, 10
+program6, 8
+program7, 10
+program8, 6
+program9, 8
+program10, 12

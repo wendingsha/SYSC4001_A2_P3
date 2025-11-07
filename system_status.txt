@@ -6,19 +6,38 @@ time: 23; current trace: FORK, 10
 |   0 |        init |               6 |    1 | waiting |
 +------------------------------------------------------+
 
-time: 247; current trace: EXEC program1, 50
+time: 49; current trace: FORK, 12
 +------------------------------------------------------+
 | PID |program name |partition number | size |   state |
 +------------------------------------------------------+
-|   1 |    program1 |               4 |   10 | running |
+|   2 |        init |               4 |    1 | running |
 |   0 |        init |               6 |    1 | waiting |
+|   1 |        init |               5 |    1 | waiting |
 +------------------------------------------------------+
 
-time: 620; current trace: EXEC program2, 25
+time: 218; current trace: EXEC program9, 25
 +------------------------------------------------------+
 | PID |program name |partition number | size |   state |
 +------------------------------------------------------+
-|   0 |    program2 |               3 |   15 | running |
+|   2 |    program9 |               4 |    8 | running |
+|   0 |        init |               6 |    1 | waiting |
+|   1 |        init |               5 |    1 | waiting |
++------------------------------------------------------+
+
+time: 486; current trace: EXEC program9, 25
++------------------------------------------------------+
+| PID |program name |partition number | size |   state |
++------------------------------------------------------+
+|   1 |    program9 |               5 |    8 | running |
+|   0 |        init |               6 |    1 | waiting |
+|   1 |        init |               5 |    1 | waiting |
++------------------------------------------------------+
+
+time: 859; current trace: EXEC program10, 30
++------------------------------------------------------+
+| PID |program name |partition number | size |   state |
++------------------------------------------------------+
+|   0 |   program10 |               3 |   12 | running |
 |   0 |        init |               6 |    1 | waiting |
 +------------------------------------------------------+
 
