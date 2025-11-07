@@ -55,23 +55,23 @@ std::tuple<std::string, std::string, int> simulate_trace(std::vector<std::string
 
             ///////////////////////////////////////////////////////////////////////////////////////////
             //Add your FORK output here
-            // 1. Simulate ISR for FORK
+            //simulate ISR for FORK
             execution += std::to_string(current_time) + ", " + std::to_string(duration_intr) + ", cloning PCB\n";
             current_time += duration_intr;
 
-            // Create child PCB (PID + 1)
+            //create child PCB (PID + 1)
             PCB child(current.PID + 1, current.PID, current.program_name, current.size, -1);
             bool alloc = allocate_memory(&child);
             if(!alloc) {
                 execution += std::to_string(current_time) + ", 0, ERROR: Memory allocation failed for child\n";
             }
 
-            // parent waits
+            //parent waits
             wait_queue.push_back(current);
             system_status += "time: " + std::to_string(current_time) + "; current trace: FORK, " + std::to_string(duration_intr) + "\n";
             system_status += print_PCB(child, wait_queue) + "\n";
 
-            // Call scheduler
+            //call scheduler
             execution += std::to_string(current_time) + ", 0, " + scheduler();
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time += 1;
@@ -129,21 +129,21 @@ std::tuple<std::string, std::string, int> simulate_trace(std::vector<std::string
 
             ///////////////////////////////////////////////////////////////////////////////////////////
             //Add your EXEC output here
-            // get program size from external_files
+            //get program size from external_files
             unsigned int program_size = get_size(program_name, external_files);
 
-            // simulate loader and assign memory
+            //simulate loader and assign memory
             PCB exec_proc = current;
             exec_proc.program_name = program_name;
             exec_proc.size = program_size;
 
-            free_memory(&exec_proc); // release old partition
+            free_memory(&exec_proc); //release old partition
             bool alloc = allocate_memory(&exec_proc);
             if(!alloc) {
                 execution += std::to_string(current_time) + ", 0, ERROR: No partition large enough for " + program_name + "\n";
             }
 
-            // duration: loader time (15ms per MB)
+            //loader time
             int load_time = program_size * 15;
 
             execution += std::to_string(current_time) + ", " + std::to_string(duration_intr) + ", Program is " + std::to_string(program_size) + "Mb large\n";
@@ -158,7 +158,7 @@ std::tuple<std::string, std::string, int> simulate_trace(std::vector<std::string
             execution += std::to_string(current_time) + ", 1, IRET\n";
             current_time += 1;
 
-            // record system status snapshot
+            //record system status snapshot
             system_status += "time: " + std::to_string(current_time) + "; current trace: EXEC " + program_name + ", " + std::to_string(duration_intr) + "\n";
             system_status += print_PCB(exec_proc, wait_queue) + "\n";
 
@@ -180,8 +180,6 @@ std::tuple<std::string, std::string, int> simulate_trace(std::vector<std::string
             execution += exec_child;
             system_status += sys_child;
             current_time = new_time;
-
-
             ///////////////////////////////////////////////////////////////////////////////////////////
 
             break; //Why is this important? (answer in report)
