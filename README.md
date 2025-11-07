@@ -8,7 +8,7 @@ The simulator is written in **C++17** and tested under **Ubuntu 22.04**.
 
 ## Build & Run Instructions
 
-### 1.Compile and run all tests
+### Compile and run all tests
 
 chmod +x build.sh
 
