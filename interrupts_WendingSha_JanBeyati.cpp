@@ -5,7 +5,8 @@
  *
  */
 
-#include "interrupts.hpp"
+#include "interrupts_WendingSha_JanBeyati.hpp"
+
 // Temporary scheduler placeholder
 std::string scheduler() {
     return "scheduler called\n";
@@ -118,8 +119,6 @@ std::tuple<std::string, std::string, int> simulate_trace(std::vector<std::string
             execution += child_exec;
             system_status += child_sys;
             current_time = new_time;
-
-
             ///////////////////////////////////////////////////////////////////////////////////////////
 
 

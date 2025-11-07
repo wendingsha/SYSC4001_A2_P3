@@ -8,7 +8,7 @@ set -euo pipefail
 shopt -s nullglob
 
 echo "Compiling simulator..."
-g++ -std=c++17 interrupts.cpp -o interrupts
+g++ -std=c++17 interrupts_WendingSha_JanBeyati.cpp -o interrupts
 echo "Compilation successful."
 
 VECTOR="vector_table.txt"
